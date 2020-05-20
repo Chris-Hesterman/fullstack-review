@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const db = require('../database');
 const github = require('../helpers/github.js');
 let app = express();
@@ -40,7 +39,16 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
+  db.getRepos()
+    // console.log(repoData);
+    .then((data) => {
+      res.send(data);
+      console.log(data);
+      res.end();
+    })
+    .catch((err) => {
+      throw err;
+    });
   // This route should send back the top 25 repos
 });
 

@@ -21,7 +21,7 @@ promise
       console.log('save documents');
       Repo.collection.insertMany(documents, (err, docs) => {
         if (err) {
-          console.log(err);
+          'Error: ', err;
           return;
         }
         console.log(docs, ' added to database');
@@ -30,7 +30,12 @@ promise
       // the MongoDB
     };
 
+    let getRepos = () => {
+      return Repo.find().sort({ forks: -1 }).limit(25);
+    };
+
     module.exports.save = save;
+    module.exports.getRepos = getRepos;
   })
   .catch((err) => {
     throw err;
