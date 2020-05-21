@@ -8,7 +8,7 @@ let getReposByUsername = (username) => {
   let options = {
     headers: {
       'User-Agent': 'request',
-      Authorization: `token ${config.TOKEN}`
+      Authorization: `token ${process.env.TOKEN || config.TOKEN}`
     }
   };
 
