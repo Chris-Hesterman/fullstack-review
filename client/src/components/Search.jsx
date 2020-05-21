@@ -6,7 +6,7 @@ class Search extends React.Component {
     this.state = {
       term: ''
     };
-    this.search = this.search.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -16,8 +16,11 @@ class Search extends React.Component {
     });
   }
 
-  search() {
+  handleClick(e) {
     this.props.onSearch(this.state.term);
+    setTimeout(() => {
+      this.props.getRepos();
+    }, 500);
   }
 
   render() {
@@ -26,7 +29,7 @@ class Search extends React.Component {
         <h4>Add more repos!</h4>
         Enter a github username:{' '}
         <input value={this.state.terms} onChange={this.onChange} />
-        <button onClick={this.search}> Add Repos </button>
+        <button onClick={this.handleClick}> Add Repos </button>
       </div>
     );
   }

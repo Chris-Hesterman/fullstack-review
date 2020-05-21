@@ -9,9 +9,8 @@ promise
 
     let repoSchema = mongoose.Schema({
       name: String,
-      repoId: { type: Number, unique: true },
       username: String,
-      url: String,
+      url: { type: String, unique: true },
       forks: Number
     });
 

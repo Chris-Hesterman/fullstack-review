@@ -13,11 +13,10 @@ app.post('/repos', function (req, res) {
     .getReposByUsername(req.body.username)
     .then((response) => {
       let documents = [];
-
+      console.log(response.data);
       for (let repo of response.data) {
         let document = {};
         document.name = repo.name;
-        document.repoId = repo.id;
         document.username = repo.owner.login;
         document.url = repo.html_url;
         document.forks = repo.forks_count;
@@ -40,10 +39,8 @@ app.post('/repos', function (req, res) {
 
 app.get('/repos', function (req, res) {
   db.getRepos()
-    // console.log(repoData);
     .then((data) => {
       res.send(data);
-      console.log(data);
       res.end();
     })
     .catch((err) => {
