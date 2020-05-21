@@ -9,14 +9,14 @@ const RepoList = (props) => {
   );
   if (props.repos.length) {
     repoList = props.repos.map((repo) => {
-      return <RepoListItem repo={repo} key={repo.url} />;
+      return <RepoListItem repo={repo} key={repo.repoId} />;
     });
   }
 
   return (
     <div>
       <h4> Repo List Component </h4>
-      There are {props.repos.length} repos.
+      There are {props.count.count} repos. <span>Here are the top 25</span>
       <table>
         <thead>
           <tr>

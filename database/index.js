@@ -9,8 +9,9 @@ promise
 
     let repoSchema = mongoose.Schema({
       name: String,
+      repoId: { type: Number, unique: true },
       username: String,
-      url: { type: String, unique: true },
+      url: String,
       forks: Number
     });
 
@@ -20,7 +21,7 @@ promise
       console.log('save documents');
       Repo.collection.insertMany(documents, (err, docs) => {
         if (err) {
-          'Error: ', err;
+          console.log('Error: ', err);
           return;
         }
         console.log(docs, ' added to database');
@@ -33,7 +34,18 @@ promise
       return Repo.find().sort({ forks: -1 }).limit(25);
     };
 
+    let getTotalRepos = () => {
+      return Repo.count({}, (err, count) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        return count;
+      });
+    };
+
     module.exports.save = save;
+    module.exports.getTotalRepos = getTotalRepos;
     module.exports.getRepos = getRepos;
   })
   .catch((err) => {
