@@ -23,8 +23,8 @@ class App extends React.Component {
       method: 'POST',
       data: data
     })
-      .done(() => {
-        console.log('success');
+      .done((data) => {
+        this.getRepos();
       })
       .fail(() => {
         console.log('error');
@@ -55,7 +55,7 @@ class App extends React.Component {
       <div>
         <h1>Github Fetcher</h1>
         <RepoList repos={this.state.repos} count={this.state.repoCount} />
-        <Search onSearch={this.search} getRepos={this.getRepos} />
+        <Search onSearch={this.search} />
       </div>
     );
   }

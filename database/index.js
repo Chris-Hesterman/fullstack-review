@@ -21,7 +21,7 @@ promise
       console.log('save documents');
       Repo.collection.insertMany(documents, (err, docs) => {
         if (err) {
-          console.log('Error: ', err);
+          console.log('Some or all repos are already present in database!');
           return;
         }
         console.log(docs, ' added to database');

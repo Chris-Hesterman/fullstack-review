@@ -24,9 +24,9 @@ app.post('/repos', function (req, res) {
         documents.push(document);
       }
       db.save(documents);
-      res.send(documents);
     })
     .then(() => {
+      res.send();
       res.end();
     })
     .catch((err) => {

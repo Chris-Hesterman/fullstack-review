@@ -4,8 +4,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: '',
-      reload: false
+      term: ''
     };
     this.handleClick = this.handleClick.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -19,12 +18,6 @@ class Search extends React.Component {
 
   handleClick(e) {
     this.props.onSearch(this.state.term);
-    setTimeout(() => {
-      this.setState((prevState) => {
-        return { reload: !prevState.reload };
-      });
-      this.props.getRepos();
-    }, 2000);
   }
 
   render() {
