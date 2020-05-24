@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
-var promise = mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/fetcher',
-  {
-    useMongoClient: true
-  }
-);
-
+var promise = mongoose.connect(process.env.MONGODB_URI, {
+  useMongoClient: true
+});
+// || 'mongodb://localhost/fetcher' ** removed from mongoose connect
 promise
   .then((db) => {
     console.log('mongo connection successful');
