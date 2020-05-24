@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
-var promise = mongoose.connect('mongodb://localhost/fetcher', {
-  useMongoClient: true
-});
+var promise = mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/fetcher',
+  {
+    useMongoClient: true
+  }
+);
 
 promise
   .then((db) => {
