@@ -19,7 +19,7 @@ class App extends React.Component {
     let data = { username: term };
     console.log(`${term} was searched`);
     $.ajax({
-      url: 'http://127.0.0.1:1128/repos',
+      url: 'https://floating-anchorage-50683.herokuapp.com/repos',
       method: 'POST',
       data: data
     })
@@ -33,7 +33,7 @@ class App extends React.Component {
 
   getRepos() {
     $.ajax({
-      url: 'http://127.0.0.1:1128/repos',
+      url: 'https://floating-anchorage-50683.herokuapp.com/repos',
       method: 'GET'
     })
       .done((data) => {
